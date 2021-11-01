@@ -28,10 +28,12 @@ const controls = new THREE.OrbitControls( camera, renderer.domElement );
 var loader = new THREE.GLTFLoader();
 loader.load("assets/scene.gltf" , function(gltf){
   gltf.scene.rotation.set(THREE.Math.degToRad(0), THREE.Math.degToRad(0) , THREE.Math.degToRad(0));
+  controls.enableDamping = true;
   scene.add(gltf.scene);
 });
 
 function animate() {
+  controls.update();
 	requestAnimationFrame( animate );
 	renderer.render( scene, camera );
 }
